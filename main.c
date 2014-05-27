@@ -7,11 +7,17 @@ int main(){
     Float b = new_float(-0.2);
     Float c = add(a,b);
     Float d = multiply(b,c);
-
     printinfo(a);
     printinfo(b);
     printinfo(c);
     printinfo(d);
+    int i;
+    for (i = 0; i < 1000; i++)
+    {
+        d = add (d, a);
+        if (i % 100 == 0)
+            printinfo(d);
+    }
     return 0;
 }
 
@@ -139,18 +145,22 @@ Float zero(){
 void printinfo(Float f)
 {
     int i;
-    printf("%e\n", f.val);
+    printf("\nvalue: %e\n", f.val);
     for (i = 0; i < counter; i++)
     {
         printf("eps[%d]: %Le\n", i, f.eps[i]);
     }
     printf("epshi: %Le\n", f.epshi);
-    long double sumerror = epshi;
+    long double sumerror = f.epshi;
     for (i = 0; i < counter; i++)
     {
-        sumerror += eps[i];
+        sumerror += f.eps[i];
     }
-    printf("Predicted Max Error: \n");
+    printf("Predicted Max Absolute Error: %Le\n", sumerror);
+    if (f.val <= 1e-8 && f.val >= -1e-8)
+        printf("Predicted Max Relative Error: NaN\n");
+    else
+        printf("Predicted Max Relative Error:%Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
 }
 void epsToPositive(Float *f)
 {
