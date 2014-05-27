@@ -10,8 +10,6 @@
 
 [ \t]			;
 
-[0-9]+			{yylval.sval = yytext; return INT;}
-
 [0-9]+\.[0-9]+	{yylval.sval = yytext; return FLOAT;}
 
 [-+()=/*\n]		{return *yytext;}
