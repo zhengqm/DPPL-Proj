@@ -13,7 +13,7 @@ typedef struct _Float
 
 
 
-long double extract_eps(float);
+long double getLastPrecision(float);
 Float add(Float, Float);
 Float multiply(Float, Float);
 Float zero();
@@ -25,11 +25,18 @@ int main(){
     return 0;
 }
 
-
-
-long double extract_eps(float b){
-    return 0.005;
-
+long double getLastPrecision(float f)
+{
+    long double ld = f;
+    long addr = (long)(&ld);
+    *(long*)addr = 0x8000000000000000; //set Frac 0
+    addr += 8;
+    long Exp = (*(long*)(addr)) & 0x7FFF;
+    Exp -= 23;
+    *(long*)addr = (*(long*)addr) & 0x8000;
+    *(long*)addr = (*(long*)addr) | Exp; //set Exp - 23
+    ld /= 2;
+    return ld;
 }
 
 
@@ -63,7 +70,7 @@ Float add(Float a, Float b){
 
 Float new_float(float f){
     Float result = zero();
-    long double new_eps = extract_eps(f);
+    long double new_eps = getLastPrecision(f);
     // Set value
     result.val = f;
 
@@ -88,26 +95,25 @@ Float multiply(Float a, Float b){
 
     // Calculate eps
     for( i = 0; i < MAX; i++){
-        result.eps[i] += a.val * b.eps[i] + b.val * a.eps[i];
+        result.eps[i] = a.val * b.eps[i] + b.val * a.eps[i];
     }
 
     // Calculate epshi
     for(i = 0; i < MAX; i++){
         for (j = 0; j < MAX; j++){
-            new_epshi = a.eps[i] * b.eps[j];
+            new_epshi += a.eps[i] * b.eps[j];
         }
     }
     for (i = 0; i < MAX; i++){
         new_epshi += a.epshi * b.eps[i];
     }
-    new_epshi = a.epshi * b.val;
-    new_epshi = a.epshi * b.epshi;
+    new_epshi += a.epshi * b.val;
+    new_epshi += a.epshi * b.epshi;
 
     for (i = 0; i < MAX; i++){
         new_epshi += b.epshi * a.eps[i];
     }
-    new_epshi = b.epshi * a.val;
-    new_epshi = b.epshi * a.epshi;
+    new_epshi += b.epshi * a.val;
     result.epshi = new_epshi;
 
     // Add new epsilon
