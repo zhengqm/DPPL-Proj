@@ -145,7 +145,12 @@ void printinfo(Float f)
         printf("eps[%d]: %Le\n", i, f.eps[i]);
     }
     printf("epshi: %Le\n", f.epshi);
-
+    long double sumerror = epshi;
+    for (i = 0; i < counter; i++)
+    {
+        sumerror += eps[i];
+    }
+    printf("Predicted Max Error: \n");
 }
 void epsToPositive(Float *f)
 {
