@@ -18,10 +18,19 @@ Float add(Float, Float);
 Float multiply(Float, Float);
 Float zero();
 Float new_float(float);
-
-
+void printinfo(Float f);
+void epsToPositive(Float *f);
 
 int main(){
+    Float a = new_float(0.1);
+    Float b = new_float(-0.2);
+    Float c = add(a,b);
+    Float d = multiply(b,c);
+
+    printinfo(a);
+    printinfo(b);
+    printinfo(c);
+    printinfo(d);
     return 0;
 }
 
@@ -36,9 +45,10 @@ long double getLastPrecision(float f)
     *(long*)addr = (*(long*)addr) & 0x8000;
     *(long*)addr = (*(long*)addr) | Exp; //set Exp - 23
     ld /= 2;
+    if (ld < 0)
+        ld = -ld;
     return ld;
 }
-
 
 Float add(Float a, Float b){
 
@@ -52,7 +62,7 @@ Float add(Float a, Float b){
 
     // New epsilon from above calculation
     long double new_eps = new_val - float_val;
-
+    if (new_eps < 0) new_eps = -new_eps;
     // For each possible eps
     for( i = 0; i < counter; i++){
         result.eps[i] = a.eps[i] + b.eps[i];
@@ -65,12 +75,19 @@ Float add(Float a, Float b){
     // For epshi
     result.epshi = a.epshi + b.epshi;
 
+    // For val
+    result.val = float_val;
+    epsToPositive(&result);
     return result;
 }
-
+Float sub(Float a, Float b){
+    b.val = -b.val;
+    return add(a, b);
+}
 Float new_float(float f){
     Float result = zero();
     long double new_eps = getLastPrecision(f);
+    printf("debug: %Le\n", new_eps);
     // Set value
     result.val = f;
 
@@ -92,6 +109,7 @@ Float multiply(Float a, Float b){
     long double new_val = (long double)a.val * (long double)b.val;
     float float_val = a.val * b.val;
     new_eps = new_val - float_val;
+    if (new_eps < 0) new_eps = -new_eps;
 
     // Calculate eps
     for( i = 0; i < MAX; i++){
@@ -119,6 +137,10 @@ Float multiply(Float a, Float b){
     // Add new epsilon
     result.eps[counter++] = new_eps;
 
+    // For val
+    result.val = float_val;
+
+    epsToPositive(&result);
     return result;
 }
 
@@ -133,4 +155,29 @@ Float zero(){
     }
     return result;
 }
+void printinfo(Float f)
+{
+    int i;
+    printf("%e\n", f.val);
+    for (i = 0; i < counter; i++)
+    {
+        printf("eps[%d]: %Le\n", i, f.eps[i]);
+    }
+    printf("epshi: %Le\n", f.epshi);
 
+}
+void epsToPositive(Float *f)
+{
+    int i = 0;
+    for (i = 0; i < counter; i++)
+    {
+        if (f->eps[i] < 0)
+        {
+            f->eps[i] = -f->eps[i];
+        }
+    }
+    if (f->epshi < 0)
+    {
+        f->epshi = -(f->epshi);
+    }
+}
