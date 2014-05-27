@@ -15,6 +15,7 @@ int nvars=0;
 int IsTermDouble = 0;
 int IsMuldivDouble = 0;
 int IsExprDouble = 0;
+int line_num = 1;
 
 %}
 %union { Float dval; int ivar; char *sval; }
@@ -31,12 +32,12 @@ int IsExprDouble = 0;
 
 %%
 program
-	: statement program
+	: {printf("\nProcessing Line %d Now...\n", line_num); line_num++;} statement program			{ }
 	|
 	;
 statement
-	: expr '\n'					{ } 
-	| VARIABLE '=' expr '\n' 	{ Var[$1] = $3; printinfo(Var[$1]); } 
+	: expr '\n'					{ printinfo($1); } 
+	| VARIABLE '=' expr '\n' 	{ Var[$1] = $3; } 
 	;
 
 expr

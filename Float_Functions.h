@@ -64,7 +64,7 @@ Float sub(Float a, Float b){
 Float new_float(float f){
     Float result = zero();
     long double new_eps = getLastPrecision(f);
-    printf("debug: %Le\n", new_eps);
+    //printf("debug: %Le\n", new_eps);
     // Set value
     result.val = f;
 
