@@ -1,6 +1,5 @@
 
-Freesa － A Float DSL With Statical Analysis
-=======================================
+# Freesa － A Float DSL With Statical Analysis
 ----------------------------------------------
 
 # How to Use?
