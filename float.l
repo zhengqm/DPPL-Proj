@@ -8,15 +8,15 @@
 
 %%
 
-[ \t]			;
+[ \t]			; //ignore tab and whitespaces
 
-[0-9]+\.[0-9]+	{yylval.sval = yytext; return FLOAT;}
+[0-9]+\.[0-9]+	{yylval.sval = yytext; return FLOAT;} //float numbers
 
-[-+()=/*\n]		{return *yytext;}
+[-+()=*\n]		{return *yytext;} //operators
 
-[a-z]			{yylval.ivar = varindex(yytext); return VARIABLE;}
+[a-z]			{yylval.ivar = varindex(yytext); return VARIABLE;} //varaible names
 
-.				{;}
+.				{;} //anything else.
 
 %%
 
