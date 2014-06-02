@@ -21,15 +21,15 @@ int main(){
     return 0;
 }
 
-long double getLastPrecision(float f)
+long double valid2toabs(float f, int valid)
 {
     long double ld = f;
     long addr = (long)(&ld);
     *(long*)addr = 0x8000000000000000; //set Frac 0
     addr += 8;
     long Exp = (*(long*)(addr)) & 0x7FFF;
-    if(Exp >= 23)
-        Exp -= 23;
+    if(Exp >= valid)
+        Exp -= valid;
     else
         Exp = 0;
     *(long*)addr = (*(long*)addr) & 0x8000;
@@ -39,7 +39,42 @@ long double getLastPrecision(float f)
         ld = -ld;
     return ld;
 }
+int validabsto2(float val, long double eps)
+{
+    long double ldval = val;
+    long addr = (long)(&ldval);
+    addr += 8;
+    long valExp = (*(long)(addr)) & 0x7FFF;
 
+    addr = (long)(&eps);
+    addr += 8;
+    long epsExp = (*(long)(addr)) & 0x7FFF;
+
+    int diff = valExp - epsExp - 1;
+    return (diff > 0)?diff:0;
+}
+int valid2to10(int bin)
+{
+    if (bin >= 32)
+    {
+        printf("Not support.\n");
+        return 10;
+    }
+    int vec[32] = {0,1,1,1,2,2,2,3,3,3,4,4,4,4,5,5,5,6,6,6,7,7,7,7,8,8,8,9,9,9,10,10};
+    return vec[bin];
+}
+int valid10to2(int dec)
+{
+    if (dec < 0)
+        return 23;
+    if (dec >= 10)
+    {
+        printf("Not support.\n");
+        return 23;
+    }
+    int vec[10] = {0,1,4,7,10,14,18,20,24,27};
+    return vec[dec];
+}
 Float add(Float a, Float b){
 
     Float result = zero();
@@ -74,16 +109,17 @@ Float sub(Float a, Float b){
     b.val = -b.val;
     return add(a, b);
 }
-Float new_float(float f, float given_eps = 0){
+Float new_float(float f, int decprecision){
 
     Float result = zero();
     long double new_eps = 0.0;
     
-    if (given_eps >= -0.0000000000001 && given_eps <= 0.0000000000001)
-        new_eps = getLastPrecision(f);
-    else
-        new_eps = given_eps;
+    // if (given_eps >= -0.0000000000001 && given_eps <= 0.0000000000001)
+    //     new_eps = valid2toabs(f);
+    // else
+    //     new_eps = given_eps;
 
+    new_eps = valid2toabs(f, valid10to2(decprecision));
     printf("debug: %Le\n", new_eps);
     // Set value
     result.val = f;
