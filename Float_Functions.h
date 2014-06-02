@@ -112,7 +112,7 @@ Float new_float(float f, int decprecision){
     //     new_eps = given_eps;
 
     new_eps = valid2toabs(f, valid10to2(decprecision));
-    printf("debug: %Le\n", new_eps);
+    //printf("debug: %Le\n", new_eps);
     // Set value
     result.val = f;
 
@@ -198,7 +198,7 @@ void printinfo(Float f)
     if (f.val <= 1e-8 && f.val >= -1e-8)
         printf("Predicted Max Relative Error: NaN\n");
     else
-        printf("Predicted Max Relative Error:%Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
+        printf("Predicted Max Relative Error: %Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
     printf("Valid bits in dec: %d\n", valid2to10(validabsto2(f.val, sumerror)));
 }
 void epsToPositive(Float *f)
