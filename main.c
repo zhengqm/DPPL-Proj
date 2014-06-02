@@ -71,9 +71,16 @@ Float sub(Float a, Float b){
     b.val = -b.val;
     return add(a, b);
 }
-Float new_float(float f){
+Float new_float(float f, float given_eps = 0){
+
     Float result = zero();
-    long double new_eps = getLastPrecision(f);
+    long double new_eps = 0.0;
+    
+    if (given_eps >= -0.0000000000001 && given_eps <= 0.0000000000001)
+        new_eps = getLastPrecision(f);
+    else
+        new_eps = given_eps;
+
     printf("debug: %Le\n", new_eps);
     // Set value
     result.val = f;
