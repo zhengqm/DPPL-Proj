@@ -1,5 +1,6 @@
+Wanted Precision: 5
 
-Processing Line 1 Now...
+Processing Line 2 Now...
 
 value: 1.200000e+00
 eps[0]: 5.960464e-08
@@ -7,7 +8,7 @@ epshi: 0.000000e+00
 Predicted Max Absolute Error: 5.960464e-08
 Predicted Max Relative Error: 4.967054e-08
 
-Processing Line 2 Now...
+Processing Line 3 Now...
 
 value: 1.440000e+00
 eps[0]: 0.000000e+00
@@ -18,9 +19,9 @@ epshi: 3.552714e-15
 Predicted Max Absolute Error: 2.002716e-07
 Predicted Max Relative Error: 1.390775e-07
 
-Processing Line 3 Now...
-
 Processing Line 4 Now...
+
+Processing Line 5 Now...
 
 value: 4.400001e-01
 eps[0]: 0.000000e+00
@@ -33,7 +34,7 @@ epshi: 3.552714e-15
 Predicted Max Absolute Error: 2.598763e-07
 Predicted Max Relative Error: 5.906278e-07
 
-Processing Line 5 Now...
+Processing Line 6 Now...
 
 value: 2.592000e+02
 eps[0]: 0.000000e+00
@@ -48,7 +49,7 @@ epshi: 2.167440e-12
 Predicted Max Absolute Error: 4.894257e-05
 Predicted Max Relative Error: 1.888216e-07
 
-Processing Line 6 Now...
+Processing Line 7 Now...
 
 value: 1.440000e+00
 eps[0]: 0.000000e+00
@@ -63,6 +64,23 @@ eps[8]: 0.000000e+00
 epshi: 3.552714e-15
 Predicted Max Absolute Error: 3.194809e-07
 Predicted Max Relative Error: 2.218617e-07
+
+value: 2.073600e+00
+eps[0]: 0.000000e+00
+eps[1]: 2.059937e-07
+eps[2]: 2.059937e-07
+eps[3]: 1.647949e-07
+eps[4]: 1.716614e-07
+eps[5]: 0.000000e+00
+eps[6]: 0.000000e+00
+eps[7]: 0.000000e+00
+eps[8]: 0.000000e+00
+eps[9]: 1.110077e-07
+epshi: 7.421477e-14
+Predicted Max Absolute Error: 8.594514e-07
+Predicted Max Relative Error: 4.144731e-07
+
+Processing Line 8 Now...
 
 value: 2.073600e+00
 eps[0]: 0.000000e+00

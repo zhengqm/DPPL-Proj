@@ -10,7 +10,11 @@
 
 [ \t]			; //ignore tab and whitespaces
 
-[0-9]+\.[0-9]+	{yylval.sval = yytext; return FLOAT;} //float numbers
+"Wanted Precision:"	{return PRECISION;}
+
+[0-9]+\.[0-9]+	{yylval.sval = yytext; return FLOAT;} //float numbersi
+
+[0-9]+			{yylval.ivar = atoi(yytext); return INT;}
 
 [-+()=*\n]		{return *yytext;} //operators
 

@@ -15,22 +15,27 @@ int nvars=0;
 int IsTermDouble = 0;
 int IsMuldivDouble = 0;
 int IsExprDouble = 0;
-int line_num = 1;
+int line_num = 2;
 
 %}
 %union { Float dval; int ivar; char *sval; }
 
 %token <sval> FLOAT
-%token <dval> INT; 
+%token <ivar> INT; 
 %token <ivar> VARIABLE
 %token <ivar> FLOAT32;
 %token <ivar> FLOAT64;
+%token <sval> PRECISION;
 %type <dval> expr
 %type <dval> muldiv
 %type <dval> term
 
 
 %%
+wholeprogram
+	: PRECISION INT '\n' {printf("Wanted Precision: %d\n", $2);} program	
+	; 
+
 program
 	: {printf("\nProcessing Line %d Now...\n", line_num); line_num++;} statement program			{ }
 	|
@@ -54,24 +59,25 @@ term
 	: '(' expr ')' { $$ = $2; }
 	| VARIABLE {  $$ = Var[$1]; }
 	| FLOAT { $$ = new_float(atof($1)); }
+	| FLOAT ',' INT { $$ = new_float(atof($1)); }
 ;
 %%
 
 
 int varindex(char *varname)
 {
-int i;
-for (i=0; i<nvars; i++)
-if (strcmp(varname,vars[i])==0)
-return i;
-vars[nvars] = strdup(varname);
-return nvars++;
+	int i;
+	for (i=0; i<nvars; i++)
+	if (strcmp(varname,vars[i])==0)
+	return i;
+	vars[nvars] = strdup(varname);
+	return nvars++;
 }
 int yyerror(char *s) {
     printf("%s\n", s);
 }
 int main(void)
 {
-yyparse();
-return 0;
+	yyparse();
+	return 0;
 }
