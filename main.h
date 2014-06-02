@@ -1,5 +1,5 @@
 
-#define MAX 10000
+#define MAX 100
 
 typedef struct _Float
 {

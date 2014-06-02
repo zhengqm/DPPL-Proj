@@ -2,23 +2,28 @@
 
 int counter = 0;
 
-long double getLastPrecision(float);
 Float add(Float, Float);
-Float sub(Float, Float);
 Float multiply(Float, Float);
 Float zero();
-Float new_float(float);
+Float new_float(float f, int decprecision);
 void printinfo(Float f);
 void epsToPositive(Float *f);
+long double valid2toabs(float f, int valid);
+int validabsto2(float val, long double eps);
+int valid2to10(int bin);
+int valid10to2(int dec);
 
-long double getLastPrecision(float f)
+long double valid2toabs(float f, int valid)
 {
     long double ld = f;
     long addr = (long)(&ld);
     *(long*)addr = 0x8000000000000000; //set Frac 0
     addr += 8;
     long Exp = (*(long*)(addr)) & 0x7FFF;
-    Exp -= 23;
+    if(Exp >= valid)
+        Exp -= valid;
+    else
+        Exp = 0;
     *(long*)addr = (*(long*)addr) & 0x8000;
     *(long*)addr = (*(long*)addr) | Exp; //set Exp - 23
     ld /= 2;
@@ -26,7 +31,42 @@ long double getLastPrecision(float f)
         ld = -ld;
     return ld;
 }
+int validabsto2(float val, long double eps)
+{
+    long double ldval = val;
+    long addr = (long)(&ldval);
+    addr += 8;
+    long valExp = (*(long*)(addr)) & 0x7FFF;
 
+    addr = (long)(&eps);
+    addr += 8;
+    long epsExp = (*(long*)(addr)) & 0x7FFF;
+
+    int diff = valExp - epsExp - 1;
+    return (diff > 0)?diff:0;
+}
+int valid2to10(int bin)
+{
+    if (bin >= 32)
+    {
+        printf("Not support.\n");
+        return 10;
+    }
+    int vec[32] = {0,1,1,1,2,2,2,3,3,3,4,4,4,4,5,5,5,6,6,6,7,7,7,7,8,8,8,9,9,9,10,10};
+    return vec[bin];
+}
+int valid10to2(int dec)
+{
+    if (dec < 0)
+        return 23;
+    if (dec >= 10)
+    {
+        printf("Not support.\n");
+        return 23;
+    }
+    int vec[10] = {0,1,4,7,10,14,18,20,24,27};
+    return vec[dec];
+}
 Float add(Float a, Float b){
 
     Float result = zero();
@@ -61,10 +101,18 @@ Float sub(Float a, Float b){
     b.val = -b.val;
     return add(a, b);
 }
-Float new_float(float f){
+Float new_float(float f, int decprecision){
+
     Float result = zero();
-    long double new_eps = getLastPrecision(f);
-    //printf("debug: %Le\n", new_eps);
+    long double new_eps = 0.0;
+    
+    // if (given_eps >= -0.0000000000001 && given_eps <= 0.0000000000001)
+    //     new_eps = valid2toabs(f);
+    // else
+    //     new_eps = given_eps;
+
+    new_eps = valid2toabs(f, valid10to2(decprecision));
+    printf("debug: %Le\n", new_eps);
     // Set value
     result.val = f;
 
@@ -150,7 +198,8 @@ void printinfo(Float f)
     if (f.val <= 1e-8 && f.val >= -1e-8)
         printf("Predicted Max Relative Error: NaN\n");
     else
-        printf("Predicted Max Relative Error: %Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
+        printf("Predicted Max Relative Error:%Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
+    printf("Valid bits in dec: %d\n", valid2to10(validabsto2(f.val, sumerror)));
 }
 void epsToPositive(Float *f)
 {

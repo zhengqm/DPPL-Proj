@@ -1,98 +1,158 @@
 Wanted Precision: 5
 
 Processing Line 2 Now...
+debug: 4.768372e-07
 
 value: 1.200000e+00
-eps[0]: 5.960464e-08
+eps[0]: 4.768372e-07
 epshi: 0.000000e+00
-Predicted Max Absolute Error: 5.960464e-08
-Predicted Max Relative Error: 4.967054e-08
+Predicted Max Absolute Error: 4.768372e-07
+Predicted Max Relative Error:3.973643e-07
+Valid bits in dec: 7
+
+value: 1.200000e+00
+eps[0]: 4.768372e-07
+epshi: 0.000000e+00
+Predicted Max Absolute Error: 4.768372e-07
+Predicted Max Relative Error:3.973643e-07
+Valid bits in dec: 7
 
 Processing Line 3 Now...
+debug: 4.768372e-07
+
+value: 1.200000e+00
+eps[0]: 0.000000e+00
+eps[1]: 4.768372e-07
+epshi: 0.000000e+00
+Predicted Max Absolute Error: 4.768372e-07
+Predicted Max Relative Error:3.973643e-07
+Valid bits in dec: 7
+debug: 4.768372e-07
+
+value: 1.200000e+00
+eps[0]: 0.000000e+00
+eps[1]: 0.000000e+00
+eps[2]: 4.768372e-07
+epshi: 0.000000e+00
+Predicted Max Absolute Error: 4.768372e-07
+Predicted Max Relative Error:3.973643e-07
+Valid bits in dec: 7
 
 value: 1.440000e+00
 eps[0]: 0.000000e+00
-eps[1]: 7.152558e-08
-eps[2]: 7.152558e-08
+eps[1]: 5.722046e-07
+eps[2]: 5.722046e-07
 eps[3]: 5.722046e-08
-epshi: 3.552714e-15
-Predicted Max Absolute Error: 2.002716e-07
-Predicted Max Relative Error: 1.390775e-07
+epshi: 2.273737e-13
+Predicted Max Absolute Error: 1.201630e-06
+Predicted Max Relative Error:8.344652e-07
+Valid bits in dec: 6
 
 Processing Line 4 Now...
+debug: 4.768372e-07
+
+value: 1.000000e+00
+eps[0]: 0.000000e+00
+eps[1]: 0.000000e+00
+eps[2]: 0.000000e+00
+eps[3]: 0.000000e+00
+eps[4]: 4.768372e-07
+epshi: 0.000000e+00
+Predicted Max Absolute Error: 4.768372e-07
+Predicted Max Relative Error:4.768372e-07
+Valid bits in dec: 7
 
 Processing Line 5 Now...
 
 value: 4.400001e-01
 eps[0]: 0.000000e+00
-eps[1]: 7.152558e-08
-eps[2]: 7.152558e-08
+eps[1]: 5.722046e-07
+eps[2]: 5.722046e-07
 eps[3]: 5.722046e-08
-eps[4]: 5.960464e-08
+eps[4]: 4.768372e-07
 eps[5]: 0.000000e+00
-epshi: 3.552714e-15
-Predicted Max Absolute Error: 2.598763e-07
-Predicted Max Relative Error: 5.906278e-07
+epshi: 2.273737e-13
+Predicted Max Absolute Error: 1.678467e-06
+Predicted Max Relative Error:3.814697e-06
+Valid bits in dec: 6
 
 Processing Line 6 Now...
+debug: 6.103516e-05
+
+value: 1.800000e+02
+eps[0]: 0.000000e+00
+eps[1]: 0.000000e+00
+eps[2]: 0.000000e+00
+eps[3]: 0.000000e+00
+eps[4]: 0.000000e+00
+eps[5]: 0.000000e+00
+eps[6]: 6.103516e-05
+epshi: 0.000000e+00
+Predicted Max Absolute Error: 6.103516e-05
+Predicted Max Relative Error:3.390842e-07
+Valid bits in dec: 7
 
 value: 2.592000e+02
 eps[0]: 0.000000e+00
-eps[1]: 1.287460e-05
-eps[2]: 1.287460e-05
+eps[1]: 1.029968e-04
+eps[2]: 1.029968e-04
 eps[3]: 1.029968e-05
 eps[4]: 0.000000e+00
 eps[5]: 0.000000e+00
-eps[6]: 1.098633e-05
+eps[6]: 8.789063e-05
 eps[7]: 1.907349e-06
-epshi: 2.167440e-12
-Predicted Max Absolute Error: 4.894257e-05
-Predicted Max Relative Error: 1.888216e-07
+epshi: 1.142689e-10
+Predicted Max Absolute Error: 3.060914e-04
+Predicted Max Relative Error:1.180908e-06
+Valid bits in dec: 6
 
 Processing Line 7 Now...
 
 value: 1.440000e+00
 eps[0]: 0.000000e+00
-eps[1]: 7.152558e-08
-eps[2]: 7.152558e-08
+eps[1]: 5.722046e-07
+eps[2]: 5.722046e-07
 eps[3]: 5.722046e-08
-eps[4]: 1.192093e-07
+eps[4]: 9.536743e-07
 eps[5]: 0.000000e+00
 eps[6]: 0.000000e+00
 eps[7]: 0.000000e+00
 eps[8]: 0.000000e+00
-epshi: 3.552714e-15
-Predicted Max Absolute Error: 3.194809e-07
-Predicted Max Relative Error: 2.218617e-07
+epshi: 2.273737e-13
+Predicted Max Absolute Error: 2.155304e-06
+Predicted Max Relative Error:1.496739e-06
+Valid bits in dec: 6
 
 value: 2.073600e+00
 eps[0]: 0.000000e+00
-eps[1]: 2.059937e-07
-eps[2]: 2.059937e-07
+eps[1]: 1.647949e-06
+eps[2]: 1.647949e-06
 eps[3]: 1.647949e-07
-eps[4]: 1.716614e-07
+eps[4]: 1.373291e-06
 eps[5]: 0.000000e+00
 eps[6]: 0.000000e+00
 eps[7]: 0.000000e+00
 eps[8]: 0.000000e+00
 eps[9]: 1.110077e-07
-epshi: 7.421477e-14
-Predicted Max Absolute Error: 8.594514e-07
-Predicted Max Relative Error: 4.144731e-07
+epshi: 3.244714e-12
+Predicted Max Absolute Error: 4.944996e-06
+Predicted Max Relative Error:2.384739e-06
+Valid bits in dec: 6
 
 Processing Line 8 Now...
 
 value: 2.073600e+00
 eps[0]: 0.000000e+00
-eps[1]: 2.059937e-07
-eps[2]: 2.059937e-07
+eps[1]: 1.647949e-06
+eps[2]: 1.647949e-06
 eps[3]: 1.647949e-07
-eps[4]: 1.716614e-07
+eps[4]: 1.373291e-06
 eps[5]: 0.000000e+00
 eps[6]: 0.000000e+00
 eps[7]: 0.000000e+00
 eps[8]: 0.000000e+00
 eps[9]: 1.110077e-07
-epshi: 7.421477e-14
-Predicted Max Absolute Error: 8.594514e-07
-Predicted Max Relative Error: 4.144731e-07
+epshi: 3.244714e-12
+Predicted Max Absolute Error: 4.944996e-06
+Predicted Max Relative Error:2.384739e-06
+Valid bits in dec: 6
