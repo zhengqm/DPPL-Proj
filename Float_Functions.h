@@ -1,6 +1,7 @@
 #include "myFloat.h"
 
 int counter = 0;
+int least_precision = 7;
 
 Float add(Float, Float);
 Float multiply(Float, Float);
@@ -199,7 +200,15 @@ void printinfo(Float f)
         printf("Predicted Max Relative Error: NaN\n");
     else
         printf("Predicted Max Relative Error: %Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
-    printf("Valid bits in dec: %d\n", valid2to10(validabsto2(f.val, sumerror)));
+    int valid_bit = valid2to10(validabsto2(f.val, sumerror));
+    printf("Valid bits in dec: %d\n", valid_bit);
+    if (valid_bit < least_precision)
+    {
+        printf("Precision not Satisfied!\n");
+        exit(-1);
+    }
+    else
+        return;
 }
 void epsToPositive(Float *f)
 {

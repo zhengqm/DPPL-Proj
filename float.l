@@ -16,7 +16,7 @@
 
 [0-9]+			{yylval.ivar = atoi(yytext); return INT;}
 
-[-+()=*\n]		{return *yytext;} //operators
+[-+()=*,\n]		{return *yytext;} //operators
 
 [a-z]			{yylval.ivar = varindex(yytext); return VARIABLE;} //varaible names
 

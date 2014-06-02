@@ -1,8 +1,8 @@
-Wanted Precision:5
-1.2
-a = 1.2 * 1.2
+Wanted Precision:1
+1.2,5
+a = 1.2,5 * 1.2,6
 b = 1.0
 c = a - b
-d = 180.0 * a
+d = 180.0,3 * a
 e = (b + c) * a
-e
+e = (d - a) * c

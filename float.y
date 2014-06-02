@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "Float_Functions.h"
+
+extern int least_precision;
+
 int yylex();
 
 #define NVARS 100
@@ -33,7 +36,7 @@ int line_num = 2;
 
 %%
 wholeprogram
-	: PRECISION INT '\n' {printf("Wanted Precision: %d\n", $2);} program	
+	: PRECISION INT '\n' {printf("Wanted Precision: %d\n", $2); least_precision = $2;} program	
 	; 
 
 program
@@ -41,28 +44,27 @@ program
 	|
 	;
 statement
-	: expr '\n'					{ printinfo($1); } 
+	: expr '\n'					{ } 
 	| VARIABLE '=' expr '\n' 	{ Var[$1] = $3; } 
 	;
 
 expr
-	: expr '+' muldiv { $$ = add($1, $3); printinfo($$);}// 
-	| expr '-' muldiv { $$ = sub($1, $3); printinfo($$);}
+	: expr '+' muldiv { $$ = add($1, $3); printf("this is +\n"); printinfo($$);}// 
+	| expr '-' muldiv { $$ = sub($1, $3); printf("this is -\n"); printinfo($$);}
 	| muldiv { $$ = $1; }
 	;
 muldiv
-	: muldiv '*' term { $$ = multiply($1, $3); printinfo($$);}
+	: muldiv '*' term { $$ = multiply($1, $3); printf("this is *\n"); printinfo($$);}
 	| muldiv '/' term { }
 	| term { $$ = $1; }
 	;
 term
 	: '(' expr ')' { $$ = $2; }
-	| VARIABLE {  $$ = Var[$1]; }
-	| FLOAT { $$ = new_float(atof($1), 7); printinfo($$); }
+	| VARIABLE {  $$ = Var[$1]; printinfo($$); }
 	| FLOAT ',' INT { $$ = new_float(atof($1), $3); printinfo($$); }
-;
+	| FLOAT { $$ = new_float(atof($1), 7); printinfo($$); }
+	;
 %%
-
 
 int varindex(char *varname)
 {
@@ -72,6 +74,7 @@ int varindex(char *varname)
 	return i;
 	vars[nvars] = strdup(varname);
 	return nvars++;
+	//| FLOAT { $$ = new_float(atof($1), 7); printf("bbbbb\n");printinfo($$); }
 }
 int yyerror(char *s) {
     printf("%s\n", s);
