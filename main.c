@@ -28,7 +28,10 @@ long double getLastPrecision(float f)
     *(long*)addr = 0x8000000000000000; //set Frac 0
     addr += 8;
     long Exp = (*(long*)(addr)) & 0x7FFF;
-    Exp -= 23;
+    if(Exp >= 23)
+        Exp -= 23;
+    else
+        Exp = 0;
     *(long*)addr = (*(long*)addr) & 0x8000;
     *(long*)addr = (*(long*)addr) | Exp; //set Exp - 23
     ld /= 2;
