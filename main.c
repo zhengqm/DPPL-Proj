@@ -3,21 +3,21 @@
 int counter = 0;
 
 int main(){
-    Float a = new_float(0.1);
-    Float b = new_float(-0.2);
+    Float a = new_float(0.1, 5);
+    Float b = new_float(-0.2, 3);
     Float c = add(a,b);
     Float d = multiply(b,c);
     printinfo(a);
     printinfo(b);
     printinfo(c);
     printinfo(d);
-    int i;
-    for (i = 0; i < 1000; i++)
-    {
-        d = add (d, a);
-        if (i % 100 == 0)
-            printinfo(d);
-    }
+    // int i;
+    // for (i = 0; i < 1000; i++)
+    // {
+    //     d = add (d, a);
+    //     if (i % 100 == 0)
+    //         printinfo(d);
+    // }
     return 0;
 }
 
@@ -44,11 +44,11 @@ int validabsto2(float val, long double eps)
     long double ldval = val;
     long addr = (long)(&ldval);
     addr += 8;
-    long valExp = (*(long)(addr)) & 0x7FFF;
+    long valExp = (*(long*)(addr)) & 0x7FFF;
 
     addr = (long)(&eps);
     addr += 8;
-    long epsExp = (*(long)(addr)) & 0x7FFF;
+    long epsExp = (*(long*)(addr)) & 0x7FFF;
 
     int diff = valExp - epsExp - 1;
     return (diff > 0)?diff:0;
@@ -207,6 +207,7 @@ void printinfo(Float f)
         printf("Predicted Max Relative Error: NaN\n");
     else
         printf("Predicted Max Relative Error:%Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
+    printf("Valid bits in dec: %d\n", valid2to10(validabsto2(f.val, sumerror)));
 }
 void epsToPositive(Float *f)
 {
