@@ -61,7 +61,7 @@ muldiv
 term
 	: '(' expr ')' { $$ = $2; }
 	| VARIABLE {  $$ = Var[$1]; printinfo($$); }
-	| FLOAT ',' INT { $$ = new_float(atof($1), $3); printinfo($$); }
+	| FLOAT ':' INT { $$ = new_float(atof($1), $3); printinfo($$); }
 	| FLOAT { $$ = new_float(atof($1), 7); printinfo($$); }
 	;
 %%
