@@ -1,4 +1,8 @@
-
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
 # Freesa － A Float DSL With Statical Analysis
 ----------------------------------------------
 
@@ -92,12 +96,3 @@ If we run them in our `parser`, the output is like
 	...
 	
 This is the result of the second line. As we can see, `Freesa` will detect possible absolute errors and relative errors. We believe it's quite useful in many **float precision analysis**.
-
-$$
-\begin{aligned}
-\dot{x} & = \sigma(y-x) \\
-\dot{y} & = \rho x - y - xz \\
-\dot{z} & = -\beta z + xy
-\end{aligned}
-$$
-
