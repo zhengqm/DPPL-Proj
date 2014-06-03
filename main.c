@@ -195,7 +195,7 @@ Float zero(){
 void printinfo(Float f)
 {
     int i;
-    int valid_bit;
+    int validbit;
     printf("\nvalue: %e\n", f.val);
     for (i = 0; i < counter; i++)
     {
@@ -213,9 +213,9 @@ void printinfo(Float f)
     else
         printf("Predicted Max Relative Error: %Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
 
-    valid_bit = valid2to10(validabsto2(f.val, sumerror)) < f.valid_bit? valid2to10(validabsto2(f.val, sumerror)) : f.valid_bit;
+    validbit = valid2to10(validabsto2(f.val, sumerror)) < f.validbit? valid2to10(validabsto2(f.val, sumerror)) : f.valid_bit;
     
-    printf("Valid bits in dec: %d\n", valid_bit);
+    printf("Valid bits in dec: %d\n", validbit);
 }
 void epsToPositive(Float *f)
 {
