@@ -103,6 +103,7 @@ Float add(Float a, Float b){
     // For val
     result.val = float_val;
     epsToPositive(&result);
+    result.valid_bit = a.valid_bit < b.valid_bit? a.valid_bit : b.valid_bit;
     return result;
 }
 Float sub(Float a, Float b){
@@ -119,6 +120,7 @@ Float new_float(float f, int decprecision){
     // else
     //     new_eps = given_eps;
 
+    result.valid_bit = decprecision < 0 ? 7 : decprecision;
     new_eps = valid2toabs(f, valid10to2(decprecision));
     //printf("debug: %Le\n", new_eps);
     // Set value
@@ -174,6 +176,8 @@ Float multiply(Float a, Float b){
     result.val = float_val;
 
     epsToPositive(&result);
+    result.valid_bit = a.valid_bit < b.valid_bit? a.valid_bit : b.valid_bit;
+
     return result;
 }
 
@@ -191,6 +195,7 @@ Float zero(){
 void printinfo(Float f)
 {
     int i;
+    int valid_bit;
     printf("\nvalue: %e\n", f.val);
     for (i = 0; i < counter; i++)
     {
@@ -207,7 +212,10 @@ void printinfo(Float f)
         printf("Predicted Max Relative Error: NaN\n");
     else
         printf("Predicted Max Relative Error: %Le\n", sumerror/f.val >= 0? sumerror/f.val:-sumerror/f.val);
-    printf("Valid bits in dec: %d\n", valid2to10(validabsto2(f.val, sumerror)));
+
+    valid_bit = valid2to10(validabsto2(f.val, sumerror)) < f.valid_bit? valid2to10(validabsto2(f.val, sumerror)) : f.valid_bit;
+    
+    printf("Valid bits in dec: %d\n", valid_bit);
 }
 void epsToPositive(Float *f)
 {
