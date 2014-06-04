@@ -32,20 +32,19 @@ View our Github Repository through qrcode.
 
 First, let's see the **lexical rules** for `Freesa`.
 
-	[ \t]			; 										//ignore tab and whitespaces
-	[0-9]+\.[0-9]+	{yylval.sval = yytext; return FLOAT;} 	//float numbers
-	[-+()=/*,\n]		{return *yytext;} 						//operators
-	[a-z]			{yylval.ivar = varindex(yytext); return VARIABLE;} //varaible names
-	.				{;} 									//anything else.
+	[ \t]			 			//ignore tab and whitespaces
+	[0-9]+\.[0-9]+				//float numbers
+	[-+()=/*,\n]				//operators
+	[a-z]						//varaible names
+	.							//anything else.
 	
 After that, we can look into `Freesa`'s **semantic grammars**. We can also see evaluation rules from here.
 
 	wholeprogram
 		: PRECISION INT '\n' program	
-		; 
-		
+		; 		
 	program
-		: statement program			
+		: statement program
 		|
 		;
 	statement
