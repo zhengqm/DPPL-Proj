@@ -226,9 +226,11 @@ Eps(dec)|0.05|0.005|0.0005|0.00005
 -----------------------------------------
 # Safety = Progress and Preservation
 
-## Evaluation Rules for Freesa
+## Evaluation for Freesa
 
 As we only have `add`, `multiply` operations on float. The evaluation rule is based on them.
+
+Besides basic evaluation, every step is checked by a statistical analyzer
 
 ## Typing Rules for Freesa
 
