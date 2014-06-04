@@ -233,3 +233,7 @@ Rule 4 also tells us that if a term in `Freesa` is **well typed** means that it 
 ## Progress
 
 For **Progress** property, a well-typed term is not stuck(either it is a value or it can take a step according to the evaluation rules.)
+
+## Preservation
+
+for **Preservation** property, if a well-typed term take a step of evaluation, then the resulting step is also well typed.
