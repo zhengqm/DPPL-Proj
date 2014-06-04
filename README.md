@@ -228,9 +228,13 @@ Eps(dec)|0.05|0.005|0.0005|0.00005
 
 ## Evaluation Rules for Freesa
 
-As we only have `add`, `multiply` operations on float. The evaluation rule is quite simple.
+As we only have `add`, `multiply` operations on float. The evaluation rule is based on them.
 
 ## Typing Rules for Freesa
+
+In `Freesa` we only have one kind of type:
+
+	Float(n)
 
 All variables in `Freesa` is typed in `Float(n)`, where `n` denotes the valid bits of the float in the decimal system. These varibles are constructed in the form:
 
@@ -265,6 +269,10 @@ Rule 4 also tells us that if a term in `Freesa` is **well typed** means that it 
 
 For **Progress** property, a well-typed term is not stuck(either it is a value or it can take a step according to the evaluation rules.)
 
+In `Freesa`, a term `t` is well-typed means that it have more valid bits than programmer expected. It also means that the result of the term `t` has enough valid bits. As we mentioned before, operands always have more valid bits than results. Thus, every well-typed term can be evaluate
+
 ## Preservation
 
 for **Preservation** property, if a well-typed term take a step of evaluation, then the resulting step is also well typed.
+
+In `Freesa`, every evaluation will check whether the result violates the required valid bit. Preservation property can be ensured by our type checker.
