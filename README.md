@@ -160,7 +160,7 @@ For the equation in Line 6, `Freesa` calculates the probable outcome statically 
 
 ![R2F](./pic/R2F.png)
 
-![f2f](./pic/F2F.png)
+![f2f](./pic/f2f.png)
 
 ![xfx](./pic/xfx.png)
 
@@ -197,7 +197,7 @@ Eps(dec)|0.05|0.005|0.0005|0.00005
 
 ## Evaluation Rules for Freesa
 
-As we only have `add`, `multiply` operations on float. The evaluation rule is quite simple:
+As we only have `add`, `multiply` operations on float. The evaluation rule is quite simple.
 
 ## Typing Rules for Freesa
 
