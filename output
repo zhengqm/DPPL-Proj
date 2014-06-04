@@ -91,7 +91,7 @@ Valid bits in dec: 4
 
 Processing Line 6 Now...
 
-value: 1.800000e+02
+value: 1.801560e+02
 eps[0]: 0.000000e+00
 eps[1]: 0.000000e+00
 eps[2]: 0.000000e+00
@@ -101,7 +101,7 @@ eps[5]: 0.000000e+00
 eps[6]: 5.000000e-01
 epshi: 0.000000e+00
 Predicted Max Absolute Error: 5.000000e-01
-Predicted Max Relative Error: 2.777778e-03
+Predicted Max Relative Error: 2.775372e-03
 Valid bits in dec: 3
 
 value: 1.440000e+00
@@ -118,18 +118,18 @@ Predicted Max Relative Error: 2.706055e-05
 Valid bits in dec: 5
 this is *
 
-value: 2.592000e+02
+value: 2.594247e+02
 eps[0]: 0.000000e+00
-eps[1]: 6.591797e-03
-eps[2]: 4.119873e-04
-eps[3]: 1.029968e-05
+eps[1]: 6.597510e-03
+eps[2]: 4.123444e-04
+eps[3]: 1.030861e-05
 eps[4]: 0.000000e+00
 eps[5]: 0.000000e+00
 eps[6]: 7.200000e-01
-eps[7]: 1.907349e-06
-epshi: 1.949407e-05
-Predicted Max Absolute Error: 7.270355e-01
-Predicted Max Relative Error: 2.804921e-03
+eps[7]: 6.646500e-06
+epshi: 1.949408e-05
+Predicted Max Absolute Error: 7.270463e-01
+Predicted Max Relative Error: 2.802534e-03
 Valid bits in dec: 3
 
 Processing Line 7 Now...
@@ -212,20 +212,20 @@ Valid bits in dec: 5
 
 Processing Line 8 Now...
 
-value: 2.592000e+02
+value: 2.594247e+02
 eps[0]: 0.000000e+00
-eps[1]: 6.591797e-03
-eps[2]: 4.119873e-04
-eps[3]: 1.029968e-05
+eps[1]: 6.597510e-03
+eps[2]: 4.123444e-04
+eps[3]: 1.030861e-05
 eps[4]: 0.000000e+00
 eps[5]: 0.000000e+00
 eps[6]: 7.200000e-01
-eps[7]: 1.907349e-06
+eps[7]: 6.646500e-06
 eps[8]: 0.000000e+00
 eps[9]: 0.000000e+00
-epshi: 1.949407e-05
-Predicted Max Absolute Error: 7.270355e-01
-Predicted Max Relative Error: 2.804921e-03
+epshi: 1.949408e-05
+Predicted Max Absolute Error: 7.270463e-01
+Predicted Max Relative Error: 2.802534e-03
 Valid bits in dec: 3
 
 value: 1.440000e+00
@@ -245,21 +245,21 @@ Predicted Max Relative Error: 2.706055e-05
 Valid bits in dec: 5
 this is -
 
-value: 2.577600e+02
+value: 2.579846e+02
 eps[0]: 0.000000e+00
-eps[1]: 6.628418e-03
-eps[2]: 4.142761e-04
-eps[3]: 1.035690e-05
+eps[1]: 6.634131e-03
+eps[2]: 4.146332e-04
+eps[3]: 1.036583e-05
 eps[4]: 0.000000e+00
 eps[5]: 0.000000e+00
 eps[6]: 7.200000e-01
-eps[7]: 1.907349e-06
+eps[7]: 6.646500e-06
 eps[8]: 0.000000e+00
 eps[9]: 0.000000e+00
 eps[10]: 2.384186e-06
-epshi: 1.949413e-05
-Predicted Max Absolute Error: 7.270769e-01
-Predicted Max Relative Error: 2.820751e-03
+epshi: 1.949414e-05
+Predicted Max Absolute Error: 7.270877e-01
+Predicted Max Relative Error: 2.818337e-03
 Valid bits in dec: 3
 
 value: 4.400001e-01
@@ -280,20 +280,20 @@ Predicted Max Relative Error: 8.964551e-05
 Valid bits in dec: 4
 this is *
 
-value: 1.134144e+02
+value: 1.135133e+02
 eps[0]: 0.000000e+00
-eps[1]: 1.235596e-02
-eps[2]: 7.722474e-04
-eps[3]: 1.930618e-05
-eps[4]: 1.229096e-04
+eps[1]: 1.236670e-02
+eps[2]: 7.729187e-04
+eps[3]: 1.932297e-05
+eps[4]: 1.230167e-04
 eps[5]: 0.000000e+00
 eps[6]: 3.168001e-01
-eps[7]: 8.392335e-07
+eps[7]: 2.924460e-06
 eps[8]: 0.000000e+00
 eps[9]: 0.000000e+00
 eps[10]: 1.049042e-06
-eps[11]: 2.035522e-06
-epshi: 3.727126e-05
-Predicted Max Absolute Error: 3.301117e-01
-Predicted Max Relative Error: 2.910668e-03
+eps[11]: 7.239141e-07
+epshi: 3.727171e-05
+Predicted Max Absolute Error: 3.301240e-01
+Predicted Max Relative Error: 2.908242e-03
 Valid bits in dec: 3

@@ -3,6 +3,6 @@ Wanted Precision:1
 a = 1.2:5 * 1.2:6
 b = 1.0
 c = a - b
-d = 180.0:3 * a
+d = 180.156:3 * a
 e = (b + c) * a
 e = (d - a) * c
